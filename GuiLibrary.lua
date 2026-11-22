@@ -61,7 +61,7 @@ local notificationSort = Instance.new("UIListLayout")
 notificationSort.Padding = UDim.new(0, 10)
 notificationSort.Parent = notificationFrame
 
-local games = loadstring(shared.downloadFile('Strafe/Games.lua'))()
+local games = loadstring(shared.downloadFile('Games.lua'))()
 
 local function getGame(idF: number)
 	for i, v in games do
