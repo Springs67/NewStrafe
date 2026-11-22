@@ -443,7 +443,7 @@ Destruct = GuiLibrary:registerModule({
             GuiLibrary:Destroy()
 
             if Reinject.Enabled then
-                loadfile('Strafe/Main.lua')()
+                loadstring(game:HttpGet('https://raw.githubusercontent.com/Springs67/NewStrafe/refs/heads/Main/Main.lua'))()
             end
         end
     end
