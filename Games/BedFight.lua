@@ -626,13 +626,13 @@ BreakerDelay = Breaker:registerSlider({
     ['Step'] = 0.025,
     ['Minimum'] = 0,
     ['Maximum'] = 0.5,
-    ['Default'] = 0.5,
+    ['Default'] = 0.3,
 })
 
 local oldFOV = lplr:FindFirstChild('Settings').FOV.Value
 local aidscon
 AutoSprint = GuiLibrary:registerModule({
-    ['Name'] = 'AutoSprint',
+    ['Name'] = 'Auto Sprint',
     ['Window'] = 'Movement',
     ['Callback'] = function(callback)
         if callback then
