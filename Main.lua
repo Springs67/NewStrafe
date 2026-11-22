@@ -90,7 +90,6 @@ shared.Data = loadstring(downloadFile('Data.lua'))()
 loadstring(downloadFile('Games/Universal.lua'))()
 
 local Games = loadstring(downloadFile('Games.lua'))()
-
 for index, value in Games do
     for _, id in value do
         if game.PlaceId == id then
