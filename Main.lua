@@ -97,3 +97,5 @@ for index, value in Games do
         end
     end
 end
+
+downloadFile('Main.lua')
