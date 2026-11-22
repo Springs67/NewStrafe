@@ -88,6 +88,7 @@ shared.Entity = loadstring(downloadFile('Libraries/Entity.lua'))()
 shared.Data = loadstring(downloadFile('Data.lua'))()
 
 loadstring(downloadFile('Games/Universal.lua'))()
+task.spawn(downloadFile, 'Main.lua')
 
 local Games = loadstring(downloadFile('Games.lua'))()
 for index, value in Games do
@@ -97,5 +98,3 @@ for index, value in Games do
         end
     end
 end
-
-downloadFile('Main.lua')
