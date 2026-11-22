@@ -479,74 +479,6 @@ local SilentAura; SilentAura = GuiLibrary:registerModule({
                     lastAttack = workspace:GetServerTimeNow()
                 end
             end)
-
-            --[[repeat
-                task.wait()
-                if not Entity.Self.Alive then
-                    continue
-                end
-
-                if HoldItemCheck.Enabled then
-                    if not Bedwars.Inventory.hand then
-                        continue
-                    end
-                    
-                    if not Bedwars.ItemMeta[Bedwars.Inventory.hand.itemType].sword then
-                        continue
-                    end
-                end
-
-                local Nearest = getNearestAttackable(AuraRange.Value)
-
-                Attacking = (Nearest ~= nil)
-
-                if Nearest then
-                    local fovNearest = getNearestMouseAttackable(AuraFieldOfView.Value)
-
-                    if AuraFieldOfView.Value ~= 360 and not fovNearest then
-                        continue
-                    end
-
-                    local Weapon = getBestWeapon()
-
-                    if not Weapon then
-                        continue
-                    end
-
-                    if PlaySwingAnim.Enabled then
-                        Bedwars.AnimationUtil.playAnimation('SWORD_SWING')
-                        Bedwars.AnimationUtil.playAnimation('FP_SWING_SWORD', Viewmodel.Humanoid)
-                    end
-
-                    if PlaySwingSound.Enabled then
-                        Bedwars.SoundUtil.playSound('SWORD_SWING_'..tostring(math.random(1, 2)))
-                    end
-
-                    if math.random(0, 100) <= AuraMissChance.Value then
-                        Bedwars.Remotes.SwordSwingMiss:FireServer({
-                            weapon = Weapon,
-                            chargeRatio = 0,
-                        })
-
-                        task.wait(AuraDelay.Value + (math.random() / 45))
-                        continue
-                    end
-
-                    task.spawn(switchHand, Weapon.tool)
-
-                    Bedwars.Remotes.SwordHit:FireServer({
-                        weapon = Weapon.tool,
-                        chargedAttack = {chargeRatio = 0},
-                        entityInstance = Nearest,
-                        validate = {
-                            targetPosition = {value = getCloserPosition(Nearest.PrimaryPart.Position, Entity.Self.Root.Position + (Entity.Self.Root.AssemblyLinearVelocity * 0.06), 2) + getRandomizedVec3()},
-                            selfPosition = {value = getCloserPosition(Entity.Self.Root.Position, Nearest.PrimaryPart.Position, AuraRange.Value - 14)}
-                        }
-                    })
-
-                    task.wait(AuraDelay.Value + (math.random() / 45))
-                end
-            until not SilentAura.Enabled]]
         end
     end
 })
@@ -557,13 +489,6 @@ AuraRange = SilentAura:registerSlider({
     ['Maximum'] = 20,
     ['Default'] = 18,
 })
---[[AuraDelay = SilentAura:registerSlider({
-    ['Name'] = 'Delay',
-    ['Step'] = 0.005,
-    ['Minimum'] = 0,
-    ['Maximum'] = 0.5,
-    ['Default'] = 0.285,
-})]]
 AuraMissChance = SilentAura:registerSlider({
     ['Name'] = 'Miss Chance (%)',
     ['Step'] = 1,
@@ -1018,8 +943,6 @@ do
 
                         gameCamera.CameraSubject = lplr.Character
                         lplr.Character.PrimaryPart.CFrame = aidedFake.CFrame
-
-
                     end
                 end)
 
@@ -1169,7 +1092,7 @@ Invisible = GuiLibrary:registerModule({
 })
 InvisMethod = Invisible:registerSelector({
     ['Name'] = 'Method',
-    ['Values'] = {'Animation'--[[, 'Remote']]}
+    ['Values'] = {'Animation'}
 })
 
 EmoteClip = GuiLibrary:registerModule({
