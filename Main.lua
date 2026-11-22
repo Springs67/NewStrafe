@@ -54,6 +54,11 @@ local downloadFile = function(path: string)
         repeat task.wait(0.5) until isfile('Strafe/' .. path)
 
         return readfile('Strafe/' .. path)
+    elseif not isfile('Strafe/' .. path) then
+        writefile(
+            'Strafe/' .. path,
+            game:HttpGet('https://raw.githubusercontent.com/Springs67/NewStrafe/refs/heads/Main/'..path)
+        )
     end
 
     return readfile('Strafe/' .. path)
