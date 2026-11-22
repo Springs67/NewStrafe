@@ -62,7 +62,6 @@ notificationSort.Padding = UDim.new(0, 10)
 notificationSort.Parent = notificationFrame
 
 local games = loadstring(shared.downloadFile('Games.lua'))()
-
 local function getGame(idF: number)
 	for i, v in games do
 		for _, id in v do
