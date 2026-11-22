@@ -5,7 +5,7 @@ if shared.GuiLibrary then
     task.wait(0.5)
 end
 
-local Developer = true --shared.Developer or false
+local Developer = shared.Developer or false
 local Debugging = shared.Debugging or false
 
 local lplr = cloneref(game:GetService('Players')).LocalPlayer
