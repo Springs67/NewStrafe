@@ -3,17 +3,18 @@ local Entity = {
     Entities = {}
 }
 
-local entConnections = {}
 function Entity:watchPlayer(plr: Player)
+    local selfConnections = {}
     local entData = {
         Player = plr,
         Model = plr.Character,
         Root = plr.Character and plr.Character.PrimaryPart or nil,
         Humanoid = plr.Character and plr.Character:FindFirstChild('Humanoid') or nil,
         Alive = Entity.getModelAlive(plr.Character),
+        Data = selfConnections,
     }
 
-    table.insert(entConnections, plr.CharacterAdded:Connect(function(char)
+    table.insert(selfConnections, plr.CharacterAdded:Connect(function(char)
         task.wait(0.01)
         char:WaitForChild('HumanoidRootPart')
         char:WaitForChild('Humanoid')
@@ -59,6 +60,16 @@ function Entity.init()
 
     Players.PlayerAdded:Connect(function(value: Player)
         Entity.Entities[value.UserId] = Entity:watchPlayer(value)
+    end)
+
+    Players.PlayerRemoving:Connect(function(value: Player)
+        for _, v in Entity.Entities[value.UserId].Data do
+            v:Disconnect()
+        end
+
+        table.clear(Entity.Entities[value.UserId].Data)
+        table.clear(Entity.Entities[value.UserId])
+        Entity.Entities[value.UserId] = nil
     end)
 end
 
