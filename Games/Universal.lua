@@ -145,8 +145,6 @@ if lplr:WaitForChild('PlayerGui'):FindFirstChild('TopbarStandard') then
     lplr.PlayerGui:FindFirstChild('TopbarStandard').Enabled = false
 end
 
-CoreGui:WaitForChild('TopBarApp'):WaitForChild('TopBarApp').Enabled = false
-
 GuiLibrary:registerModule({
     ['Name'] = 'Watermark',
     ['Window'] = 'Visual',
