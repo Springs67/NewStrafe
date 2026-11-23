@@ -2,14 +2,15 @@ if not game:IsLoaded() then
 	game.Loaded:Wait()
 end
 
-local debris = game:GetService('Debris')
-local GuiService = game:GetService('GuiService')
-local RunService = game:GetService('RunService')
-local httpService = game:GetService('HttpService')
-local textService = game:GetService('TextService')
-local tweenService = game:GetService('TweenService')
-local textChatService = game:GetService("TextChatService")
-local userInputService = game:GetService('UserInputService')
+local debris = cloneref(game:GetService('Debris'))
+local CoreGui = cloneref(game:GetService('CoreGui'))
+local GuiService = cloneref(game:GetService('GuiService'))
+local RunService = cloneref(game:GetService('RunService'))
+local httpService = cloneref(game:GetService('HttpService'))
+local textService = cloneref(game:GetService('TextService'))
+local tweenService = cloneref(game:GetService('TweenService'))
+local textChatService = cloneref(game:GetService("TextChatService"))
+local userInputService = cloneref(game:GetService('UserInputService'))
 
 while
 	not select(2, pcall(function()
