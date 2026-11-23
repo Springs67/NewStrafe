@@ -620,9 +620,11 @@ function guiLibrary:registerModule(Data: {Name: string, Window: string, ArrayTex
     keybindLabel.BackgroundTransparency = 1
     keybindLabel.TextXAlignment = Enum.TextXAlignment.Left
     keybindLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-    keybindLabel.TextSize = 16
+    keybindLabel.TextSize = 15
     keybindLabel.Text = 'Keybind: ' .. Config[Data.Name].Keybind
     keybindLabel.Font = Enum.Font.BuilderSansMedium
+
+	keybindLabel.Text = keybindLabel.Text:lower()
 
 	local moduleCons = {}
 
@@ -637,7 +639,7 @@ function guiLibrary:registerModule(Data: {Name: string, Window: string, ArrayTex
 			if not userInputService:GetFocusedTextBox() and input.KeyCode ~= Enum.KeyCode.Unknown then
 				if input.KeyCode.Name == Config[Data.Name].Keybind then
 					Config[Data.Name].Keybind = 'Unknown'
-					keybindLabel.Text = 'Keybind: ' .. Config[Data.Name].Keybind
+					keybindLabel.Text = ('Keybind: ' .. Config[Data.Name].Keybind):lower()
 
 					aids:Disconnect()
 
@@ -648,7 +650,7 @@ function guiLibrary:registerModule(Data: {Name: string, Window: string, ArrayTex
 				
 				task.wait()
 				Config[Data.Name].Keybind = input.KeyCode.Name
-				keybindLabel.Text = 'Keybind: ' .. input.KeyCode.Name
+				keybindLabel.Text = ('Keybind: ' .. input.KeyCode.Name):lower()
 				aids:Disconnect()
 
 				guiLibrary.saveCfg()
