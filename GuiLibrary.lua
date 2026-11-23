@@ -19,6 +19,8 @@ do
 	task.wait()
 end
 
+CoreGui:WaitForChild('TopBarApp'):WaitForChild('TopBarApp').Enabled = false
+
 local chat = textChatService.ChatWindowConfiguration
 chat.HorizontalAlignment = Enum.HorizontalAlignment.Left
 chat.VerticalAlignment = Enum.VerticalAlignment.Bottom
@@ -1120,6 +1122,7 @@ function guiLibrary:Destroy()
     RunService:UnbindFromRenderStep('Arraylist')
     RunService:UnbindFromRenderStep('Tab Stuff')
 
+	CoreGui:WaitForChild('TopBarApp'):WaitForChild('TopBarApp').Enabled = true
     screenGui:Destroy()
 end
 
