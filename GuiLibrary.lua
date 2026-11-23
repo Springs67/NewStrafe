@@ -136,6 +136,7 @@ local notificationData = {
 		"Strafe/Assets/x.png"
 	}
 }
+
 function guiLibrary:notify(notifType, text, duration)
 	duration = duration or 3
 	local notif = Instance.new("Frame")
